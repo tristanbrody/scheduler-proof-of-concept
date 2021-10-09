@@ -6,11 +6,9 @@ from apscheduler.schedulers.blocking import BlockingScheduler
 
 
 release_date = datetime.datetime(2021, 10, 17)
-release_datetime = datetime(release_date.year, release_date.month, release_date.day)
 
 first_time = datetime.datetime.now()
-later_time = datetime.datetime.now()
-difference = later_time - first_time
+difference = release_date - first_time
 datetime.timedelta(0, 8, 562000)
 seconds_in_day = 24 * 60 * 60
 difference = divmod(difference.days * seconds_in_day + difference.seconds, 60)
