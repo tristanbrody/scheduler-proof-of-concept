@@ -13,9 +13,6 @@ import os
 from models import db, connect_db
 
 app = Flask(__name__)
-app.config[
-    "SQLALCHEMY_DATABASE_URI"
-] = "sqlite:////mnt/c/Users/trist/Documents/Springboard_Exercises/better-bets-skeleton/better_bets.db"
 app.config["FLASK_ENV"] = os.environ.get("FLASK_ENV")
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 app.config["MAIL_SERVER"] = os.environ.get("MAIL_SERVER")
