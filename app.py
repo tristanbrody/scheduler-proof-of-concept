@@ -46,7 +46,7 @@ SQLALCHEMY_TRACK_MODIFICATIONS = False
 sched = BlockingScheduler()
 
 
-@sched.scheduled_job("interval", minutes=1)
+@sched.scheduled_job("interval", minutes=60)
 def timed_job():
     with app.app_context():
         msg = Message(
