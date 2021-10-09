@@ -5,6 +5,9 @@ from datetime import date
 from apscheduler.schedulers.blocking import BlockingScheduler
 import logging
 
+logging.basicConfig()
+logging.getLogger("apscheduler").setLevel(logging.DEBUG)
+
 release_date = datetime.datetime(2021, 10, 17)
 
 first_time = datetime.datetime.now()
@@ -43,7 +46,7 @@ SQLALCHEMY_TRACK_MODIFICATIONS = False
 sched = BlockingScheduler()
 
 
-@sched.scheduled_job("interval", minutes=60)
+@sched.scheduled_job("interval", hours=1)
 def timed_job():
     with app.app_context():
         msg = Message(
