@@ -61,3 +61,6 @@ def timed_job():
     msg.body = "Wow you're an idiot"
     mail.send(msg)
     return "tried to send something"
+
+
+sched.start()
