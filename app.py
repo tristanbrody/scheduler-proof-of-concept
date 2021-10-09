@@ -3,7 +3,10 @@ from dotenv import load_dotenv
 import datetime
 from datetime import date
 from apscheduler.schedulers.blocking import BlockingScheduler
+import logging
 
+logging.basicConfig()
+logging.getLogger("apscheduler").setLevel(logging.DEBUG)
 
 release_date = datetime.datetime(2021, 10, 17)
 
@@ -47,17 +50,18 @@ sched = BlockingScheduler()
 
 @sched.scheduled_job("interval", minutes=60)
 def timed_job():
-    msg = Message(
-        f"Succession drops in {diff_as_str} hours!",
-        sender="cookiecancer93@gmail.com",
-        recipients=[
-            "brodyjackson775@gmail.com",
-            "emmachinesepanda@gmail.com",
-            "tristandavisbrody@gmail.com",
-        ],
-    )
-    msg.body = "Wow you're an idiot"
-    mail.send(msg)
+    with app.app_context():
+        msg = Message(
+            f"Succession drops in {diff_as_str} hours!",
+            sender="cookiecancer93@gmail.com",
+            recipients=[
+                "brodyjackson775@gmail.com",
+                "emmachinesepanda@gmail.com",
+                "tristandavisbrody@gmail.com",
+            ],
+        )
+        msg.body = "Boar on the floor!"
+        mail.send(msg)
     return "tried to send something"
 
 
