@@ -41,20 +41,20 @@ app.config["MAIL_USE_SSL"] = False
 
 mail = Mail(app)
 
-SQLALCHEMY_TRACK_MODIFICATIONS = True
-
-connect_db(app)
+SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 sched = BlockingScheduler()
 
 
-@sched.scheduled_job("interval", minutes=60)
+@sched.scheduled_job("interval", hours=1)
 def timed_job():
     with app.app_context():
         msg = Message(
             f"Succession drops in {diff_as_str} hours!",
             sender="cookiecancer93@gmail.com",
             recipients=[
+                "brodyjackson775@gmail.com",
+                "emmachinesepanda@gmail.com",
                 "tristandavisbrody@gmail.com",
             ],
         )
