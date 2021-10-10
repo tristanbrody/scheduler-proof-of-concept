@@ -1,2 +1,8 @@
 .env
-venv/s
+venv
+better_bets.db
+dateInfo.txt
+modelsp.py
+random_script.py
+.vscode
+__pycache__

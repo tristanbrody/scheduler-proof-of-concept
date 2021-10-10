@@ -46,15 +46,13 @@ SQLALCHEMY_TRACK_MODIFICATIONS = False
 sched = BlockingScheduler()
 
 
-@sched.scheduled_job("interval", minutes=20)
+@sched.scheduled_job("interval", minutes=60)
 def timed_job():
     with app.app_context():
         msg = Message(
             f"Succession drops in {diff_as_str} hours!",
             sender="cookiecancer93@gmail.com",
             recipients=[
-                "brodyjackson775@gmail.com",
-                "emmachinesepanda@gmail.com",
                 "tristandavisbrody@gmail.com",
             ],
         )
